@@ -9,7 +9,6 @@ Open up a terminal, typee the following commands:\
 *source devel/setup.bash*
 ## Optional
 *cd src/map_server/src*\
-You might need to run (*g++ draw.cpp -o drawer -std=c++11 `pkg-config --cflags --libs opencv`*) beforehand\
 *./drawer*\
 This program allows a user to draw a map of their own. Click the mouse at a point and lift it up at another point to draw a line between these two points. \
 Press Esc to save as “userdrawn.jpg”\
