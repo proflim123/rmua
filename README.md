@@ -13,7 +13,7 @@ Open up a terminal, type the following commands:\
 This program allows a user to draw a map of their own by generating a blank canvas. Click the mouse at any point and lift it up at another point to draw a white line between these two points. \
 Press Esc to save as “userdrawn.jpg”
 
-## Main part\
+## Main part
 *roscore*\
 In a separate terminal, \
 *cd rmua*\
@@ -25,7 +25,7 @@ where the string file_name can be map2.pgm or userdrawn.jpg or some valid file i
 The image chosen will be displayed with OpenCV for verification. Press any key to proceed\
 Known bugs: map_server may stop responding when a key is pressed to close the OpenCV window. I suspect it is a problem with the OpenCV installation on my computer\
 Message is published sometimes, sometimes it isn't. *Use rostopic echo map* or *rostopic echo map_server/map* to see\
-The message, when echoed has -1s and 0s instead of 255s and 0s. This is because 255 is stored in the OpenCV Mat as 11111111 in unsigned binary. However, the integer array in the message reads it as signed, and 11111111 in 2's complement is -1. As long as the empty dots can be distinguished from the occupied dots it should not be a problem as long as the subscriber knows the difference.\
+The message, when echoed has -1s and 0s instead of 255s and 0s. This is because 255 is stored in the OpenCV Mat as 11111111 in unsigned binary. However, the integer array in the message reads it as signed, and 11111111 in 2's complement is -1. As long as the empty dots can be distinguished from the occupied dots it should not be a problem as long as the subscriber knows the difference.
 
 **Planner node**\
 *rosrun planner planner*\
