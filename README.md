@@ -26,7 +26,7 @@ The map_server node is meant to run from rmua folder
 where file_name can be map2.pgm or userdrawn.jpg or some valid file in the src folder\
 The image chosen will be displayed with OpenCV for verification. Press any key to proceed\
 Known bugs: map_server may stop responding when a key is pressed to close the OpenCV window. Because of this, the message may not even be published sometimes. I suspect it is a problem with the OpenCV installation on my computer\
-The message, when echoed has -1s and 0s instead of 255s and 0s. This is because 255 is stored in the OpenCV Mat as 11111111 in binary. However, the integer array in the message reads it as signed, and 11111111 in 2's complement is -1. As long as the empty dots can be distinguished from the occupied dots it should not be a problem as long as the subscriber knows the difference.\
+The message, when echoed has -1s and 0s instead of 255s and 0s. This is because 255 is stored in the OpenCV Mat as 11111111 in unsigned binary. However, the integer array in the message reads it as signed, and 11111111 in 2's complement is -1. As long as the empty dots can be distinguished from the occupied dots it should not be a problem as long as the subscriber knows the difference.\
 
 **Planner node**\
 *rosrun planner planner*\
