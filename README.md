@@ -29,5 +29,6 @@ The message, when echoed has -1s and 0s instead of 255s and 0s. This is because 
 
 **Planner node**\
 *rosrun planner planner*\
-Known bugs: regretfully, I was not able to get the subscriber to correctly receive aand interpret the occupany grid message, so I cheated and opened up the image file to work on it directly instead. In the cpp file I have commented out the blocks of code that do this. Simply comment out line 135 and uncomment lines 136 and 140 to load the maps in the map_server folder as Mats. However, that is not enough; the checks for start_ready, end_ready and map_ready need to be disabled, and the start and endpoints need to be hardcoded manually\
-Moreover, the occupancy detection does not work properly; routes end up passing right through walls, as shown in RRT_Attempt.png. However, the main idea is there
+Known bugs: regretfully, I was not able to get the subscriber to correctly receive and interpret the occupany grid message, so I cheated and opened up the image file to work on it directly instead. In the cpp file I have commented out the blocks of code that do this. Simply comment out line 135 and uncomment lines 136 and 140 to load the maps in the map_server folder as Mats. However, that is not enough; the checks for start_ready, end_ready and map_ready need to be disabled, and the start and endpoints need to be hardcoded manually\
+Moreover, the occupancy detection does not work properly; routes end up passing right through walls, as shown in RRT_Attempt.png. However, the main idea is there\
+Anytime the system pauses at a OpenCV window, press any key to continue
