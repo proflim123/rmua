@@ -1,8 +1,0 @@
-prefix=/home/proflim123/rmua/devel
-
-Name: planner
-Description: Description of planner
-Version: 0.0.0
-Cflags: -I/home/proflim123/rmua/devel/include -I/home/proflim123/rmua/src/planner/include
-Libs: -L${prefix}/lib 
-Requires: geometry_msgs message_generation nav_msgs roscpp message_runtime
