@@ -1,7 +1,7 @@
 # rmua
 Submission for RMUA technical assessment
 # Instructions
-Download the rmua.zip folder only, it has everything inside\
+Download the rmua.zip folder, it has everything inside\
 Extract the files\
 Open up a terminal, type the following commands:\
 *cd rmua*\
@@ -30,5 +30,5 @@ The message, when echoed has -1s and 0s instead of 255s and 0s. This is because 
 
 **Planner node**\
 *rosrun planner planner*\
-Known bugs: regretfully, I was not able to get the subscriber to correctly receive aand interpret the occupany grid message, so I cheated and opened up the image file to work on it directly instead. In the cpp file I have commented out the blocks of code that do this. You can comment out line 135 in planner.cpp and uncomment lines 136 to 140 to generate a working Mat for the RRT algorithm. Do note that the checks for start_ready, end_ready and map_ready need to be disabled for the path calculation to run, and startpoint and endpoint need to be hardcoded in.\
+Known bugs: regretfully, I was not able to get the subscriber to correctly receive aand interpret the occupany grid message, so I cheated and opened up the image file to work on it directly instead. In the cpp file I have commented out the blocks of code that do this.\
 Moreover, the occupancy detection does not work properly; routes end up passing right through walls, as shown in RRT_Attempt.png. However, the main idea is there
