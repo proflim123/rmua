@@ -1,6 +1,6 @@
 # rmua
 Submission for RMUA technical assessment
-#Instructions
+# Instructions
 cd rmua
 catkin_make
 source devel/setup.bash
