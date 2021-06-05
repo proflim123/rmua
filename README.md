@@ -9,7 +9,7 @@ Open up a terminal, type the following commands:
 
 *cd rmua*
 
-*catkin_make*
+*catkin build*
 
 *source devel/setup.bash*
 ## Optional part
@@ -52,7 +52,7 @@ The red tree comprises all nodes in the tree, whether or not they are part of th
 
 The blue tree is a path from start to end
 
-The green tree is an optimized version of the blue one, removing any unwanted intermediate points that could be skipped
+The green tree has been removed
 
 After outputting the points of the final route in terminal the OpenCV window will wait for you to press any key before publishing the message
 
