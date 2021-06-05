@@ -13,7 +13,7 @@ Open up a terminal, type the following commands:
 
 *source devel/setup.bash*
 ## Optional part
-(You might need to run '++ draw.cpp -o drawer -std=c++11 `pkg-config --cflags --libs opencv`' beforehand, but shouldn't be necessary)
+(You might need to run `++ draw.cpp -o drawer -std=c++11 `pkg-config --cflags --libs opencv`` beforehand, but shouldn't be necessary)
 
 *./drawer*
 
