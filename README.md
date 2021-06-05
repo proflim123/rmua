@@ -44,7 +44,9 @@ The message, when echoed has -1s and 0s instead of 255s and 0s. This is because 
 
 **Planner node**
 
-*rosrun planner planner*
+*rosrun planner planner _maxbranchlength:=20*
+
+where 20 can be replaced by the maximum length the RRT branches should be
 
 It will notify in terminal when inputs (start, end and map) are received, and will proceed to run only when all 3 are received
 
