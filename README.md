@@ -8,10 +8,11 @@ Open up a terminal, type the following commands:\
 *catkin_make*\
 *source devel/setup.bash*
 ## Optional part
-*cd src/map_server/src*\
+(You might need to run <g++ draw.cpp -o drawer -std=c++11 `pkg-config --cflags --libs opencv`> beforehand, but shouldn't be necessary)\
 *./drawer*\
-This program allows a user to draw a map of their own by generating a blank canvas. Click the mouse at any point and lift it up at another point to draw a white line between these two points. \
-Press Esc to save as “userdrawn.jpg”
+This program allows user to draw a map of their own. Click the mouse at a point and lift it up at another point to draw a line between these two points. The line will be invisible until you lift up the mouse \
+Press Esc to save as “userdrawn.jpg” inside rmua/src/map_server/src \
+If you messed up just Esc and then run ./drawer again to overwrite
 
 ## Main part
 *roscore*\
@@ -21,14 +22,30 @@ The map_server node is meant to run from rmua folder
 
 **Map_server node**\
 *rosrun map_server map_server _file_name:="file_name"*\
-where the string file_name can be map2.pgm or userdrawn.jpg or some valid file in the src folder\
-The image chosen will be displayed with OpenCV for verification. Press any key to proceed\
-Known bugs: map_server may stop responding when a key is pressed to close the OpenCV window. I suspect it is a problem with the OpenCV installation on my computer\
-Message is published sometimes, sometimes it isn't. *Use rostopic echo map* or *rostopic echo map_server/map* to see\
+rosrun map_server map_server _file_name:="file_name", where file_name can be map2.pgm or userdrawn.jpg or some valid file in the src folder\
+eg rosrun map_server map_server _file_name:="map2.pgm"\
+If you choose not to declare the file name in the rosrun command it will default to the previous given file_name. If on the first time you run it, you don't declare file_name the node won't load any image\
+
 The message, when echoed has -1s and 0s instead of 255s and 0s. This is because 255 is stored in the OpenCV Mat as 11111111 in unsigned binary. However, the integer array in the message reads it as signed, and 11111111 in 2's complement is -1. As long as the empty dots can be distinguished from the occupied dots it should not be a problem as long as the subscriber knows the difference.
 
 **Planner node**\
 *rosrun planner planner*\
-Known bugs: regretfully, I was not able to get the subscriber to correctly receive and interpret the occupany grid message, so I cheated and opened up the image file to work on it directly instead. In the cpp file I have commented out the blocks of code that do this. Simply comment out line 135 and uncomment lines 136 and 140 to load the maps in the map_server folder as Mats. However, that is not enough; the checks for start_ready, end_ready and map_ready need to be disabled, and the start and endpoints need to be hardcoded manually\
-Moreover, the occupancy detection does not work properly; routes end up passing right through walls, as shown in RRT_Attempt.png. However, the main idea is there\
-Anytime the system pauses at a OpenCV window, press any key to continue
+It will notify in terminal when inputs (start, end and map) are received, and will proceed to run only when all 3 are received\
+After the path is published the opencv program may appear to freeze; its not frozen, you have to press a key to continue\
+The red tree comprises all nodes in the tree, whether or not they are part of the route\
+The blue tree is a path from start to end\
+The green tree is an optimized version of the blue one, removing any unwanted intermediate points that could be skipped\
+After publishing the points in the final route the OpenCV window will wait for you to press any key before publishing the message\
+Click the window before pressing the key\
+
+**Assumptions made**
+The planner node is hard coded to take a map of dimensions 500 by 500. Any attempt to upload a map of some other dimension WILL crash the program\
+
+Map must be sent first before start and endpoints, which are to be sent to start_point and end_point, both of which are to be PointStamped messages. I used rqt to do this rather than write new nodes, as shown in screenshots\
+
+The origin is assumed to be 0,0 which is the top left of the map. Any coordinates must have their x and y coordinate between 0 and 500, and hopefully not in an occupied square. I personally recommend (and tested using these points in the screenshots):\
+start = (50,50) and end = (450,450) for maps 1 and 2 and userdrawn\
+start = (10,10) and end = (490,490) for map 3\
+start = (10,10) and end = (250,250) for map 4\
+
+The robot is assumed to be only one pixel wide. In general that is not the case, but for simplicity reasons I have assumed so
