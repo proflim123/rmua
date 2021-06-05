@@ -21,9 +21,11 @@ In a separate terminal, \
 The map_server node is meant to run from rmua folder
 
 **Map_server node**\
-*rosrun map_server map_server _file_name:="file_name"*, where file_name can be map2.pgm or userdrawn.jpg or some valid file in the src folder\
-eg rosrun map_server map_server _file_name:="map2.pgm"\
-If you choose not to declare the file name in the rosrun command it will default to the previous given file_name. If on the first time you run it, you don't declare file_name the node won't load any image\
+*rosrun map_server map_server _file_name:="file_name"*, where file_name can be map2.pgm or userdrawn.jpg or some valid file in the src folder
+
+eg rosrun map_server map_server _file_name:="map2.pgm"
+
+If you choose not to declare the file name in the rosrun command it will default to the previous given file_name. If on the first time you run it, you don't declare file_name the node won't load any image
 
 The message, when echoed has -1s and 0s instead of 255s and 0s. This is because 255 is stored in the OpenCV Mat as 11111111 in unsigned binary. However, the integer array in the message reads it as signed, and 11111111 in 2's complement is -1. As long as the empty dots can be distinguished from the occupied dots it should not be a problem as long as the subscriber knows the difference.
 
