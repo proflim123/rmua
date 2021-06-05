@@ -25,7 +25,7 @@ The map_server node is meant to run from rmua folder
 
 eg rosrun map_server map_server _file_name:="map2.pgm"
 
-If you choose not to declare the file name in the rosrun command it will default to the previous given file_name. If on the first time you run it, you don't declare file_name the node won't load any image
+If you choose not to declare the file name in the rosrun command it will default to the previous given file_name. If you don't declare file_name on the very first time you run it, the node won't load and publish any image
 
 The message, when echoed has -1s and 0s instead of 255s and 0s. This is because 255 is stored in the OpenCV Mat as 11111111 in unsigned binary. However, the integer array in the message reads it as signed, and 11111111 in 2's complement is -1. However, as long as the empty dots can be distinguished from the occupied dots, and the subscriber knows the difference, it should not be a problem.
 
@@ -41,9 +41,9 @@ Click the window before pressing the key\
 **Assumptions made**
 The planner node is hard coded to take a map of dimensions 500 by 500. Any attempt to upload a map of some other dimension WILL crash the program\
 
-Map must be sent first before start and endpoints, which are to be sent to start_point and end_point, both of which are to be PointStamped messages. I used rqt to do this rather than write new nodes, as shown in screenshots\
+Map must be sent first before start and endpoints, which are to be sent to the topics start_point and end_point, both of which are to be PointStamped messages. I used rqt to do this rather than write new nodes, as shown in the screenshot RQT\
 
-The origin is assumed to be 0,0 which is the top left of the map. Any coordinates must have their x and y coordinate between 0 and 500, and hopefully not in an occupied square. I personally recommend (and tested using these points in the screenshots):\
+The origin is assumed to be 0,0 which is the top left of the map. Any coordinates must have their x and y coordinate between 0 and 499 inclusive, and hopefully not in an occupied square. I personally recommend (and tested using these points in the screenshots):\
 start = (50,50) and end = (450,450) for maps 1 and 2 and userdrawn\
 start = (10,10) and end = (490,490) for map 3\
 start = (10,10) and end = (250,250) for map 4\
