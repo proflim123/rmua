@@ -10,7 +10,7 @@ Open up a terminal, type the following commands:\
 ## Optional part
 (You might need to run <g++ draw.cpp -o drawer -std=c++11 `pkg-config --cflags --libs opencv`> beforehand, but shouldn't be necessary)\
 *./drawer*\
-This program allows user to draw a map of their own. Click the mouse at a point and lift it up at another point to draw a line between these two points. The line will be invisible until you lift up the mouse \
+This program allows a user to draw a map of their own. Click the mouse at a point and lift it up at another point to draw a line between these two points. The line will be invisible until you lift up the mouse \
 Press Esc to save as “userdrawn.jpg” inside rmua/src/map_server/src \
 If you messed up just Esc and then run ./drawer again to overwrite
 
@@ -27,16 +27,15 @@ eg rosrun map_server map_server _file_name:="map2.pgm"
 
 If you choose not to declare the file name in the rosrun command it will default to the previous given file_name. If on the first time you run it, you don't declare file_name the node won't load any image
 
-The message, when echoed has -1s and 0s instead of 255s and 0s. This is because 255 is stored in the OpenCV Mat as 11111111 in unsigned binary. However, the integer array in the message reads it as signed, and 11111111 in 2's complement is -1. As long as the empty dots can be distinguished from the occupied dots it should not be a problem as long as the subscriber knows the difference.
+The message, when echoed has -1s and 0s instead of 255s and 0s. This is because 255 is stored in the OpenCV Mat as 11111111 in unsigned binary. However, the integer array in the message reads it as signed, and 11111111 in 2's complement is -1. However, as long as the empty dots can be distinguished from the occupied dots, and the subscriber knows the difference, it should not be a problem.
 
 **Planner node**\
 *rosrun planner planner*\
 It will notify in terminal when inputs (start, end and map) are received, and will proceed to run only when all 3 are received\
-After the path is published the opencv program may appear to freeze; its not frozen, you have to press a key to continue\
 The red tree comprises all nodes in the tree, whether or not they are part of the route\
 The blue tree is a path from start to end\
 The green tree is an optimized version of the blue one, removing any unwanted intermediate points that could be skipped\
-After publishing the points in the final route the OpenCV window will wait for you to press any key before publishing the message\
+After outputting the points of the final route in terminal the OpenCV window will wait for you to press any key before publishing the message\
 Click the window before pressing the key\
 
 **Assumptions made**
