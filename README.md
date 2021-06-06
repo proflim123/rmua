@@ -52,7 +52,7 @@ It will notify in terminal when inputs (start, end and map) are received, and wi
 
 The red tree comprises all nodes in the tree, whether or not they are part of the route
 
-The blue tree is a path from start to end
+The blue tree is the generated path from start to end
 
 The green tree is an optimized version of the blue tree, visible only if optimize is set to true
 
