@@ -71,8 +71,7 @@ The origin is assumed to be 0,0 which is the top left of the map. Any coordinate
 
 start = (50,50) and end = (450,450) for maps 1 and 2 and userdrawn
 
-![Image of Map1Tree]
-(https://proflim123.github.com/Map1Tree.png)
+![Image of Map1Tree](https://github.com/proflim123/rmua/blob/main/Map1Tree.png?raw=true)
 
 start = (10,10) and end = (490,490) for map 3
 
