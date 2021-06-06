@@ -42,9 +42,11 @@ The message, when echoed has -1s and 0s instead of 255s and 0s. This is because 
 
 **Planner node**
 
-*rosrun planner planner _maxbranchlength:=50*
+*rosrun planner planner _maxbranchlength:=50 _optimize:=true*
 
 where 50 can be replaced by the maximum length the RRT branches should be. As with the file_name, please declare it
+
+Set optimize to true if you want to shorten the generated route by trimming unnecessary points in the path
 
 It will notify in terminal when inputs (start, end and map) are received, and will proceed to run only when all 3 are received
 
@@ -52,7 +54,7 @@ The red tree comprises all nodes in the tree, whether or not they are part of th
 
 The blue tree is a path from start to end
 
-The green tree is an optimized version of the blue tree, skipping any unnecessary nodes
+The green tree is an optimized version of the blue tree, visible only if optimize is set to true
 
 After publishing the path message the OpenCV window will wait for you to press any key before closing
 
