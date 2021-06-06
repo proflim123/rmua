@@ -65,7 +65,9 @@ Click the window before pressing the key
 
 The planner node is hard coded to take a map of dimensions 500 by 500. Any attempt to upload a map of some other dimension WILL crash the program
 
-Map must be sent first before start and endpoints, which are to be sent to the topics start_point and end_point, both of which are to be PointStamped messages. I used rqt to do this rather than write new nodes, as shown in the screenshot RQT
+Map must be sent first before start and endpoints, which are to be sent to the topics start_point and end_point, both of which are to be PointStamped messages. I used rqt to do this rather than write new nodes, as shown in the screenshot below
+
+![Image of RQT console](https://github.com/proflim123/rmua/blob/main/RQT.png?raw=true)
 
 The origin is assumed to be 0,0 which is the top left of the map. Any coordinates must have their x and y coordinate between 0 and 499 inclusive, and hopefully not in an occupied square. I personally recommend (and tested using these points in the screenshots):
 
@@ -73,8 +75,16 @@ start = (50,50) and end = (450,450) for maps 1 and 2 and userdrawn
 
 ![Image of Map1Tree](https://github.com/proflim123/rmua/blob/main/Map1Tree.png?raw=true)
 
+![Image of Map2Tree](https://github.com/proflim123/rmua/blob/main/Map2Tree.png?raw=true)
+
+![Image of userdrawn](https://github.com/proflim123/rmua/blob/main/UserMapTree.png?raw=true)
+
 start = (10,10) and end = (490,490) for map 3
 
+![Image of Map3Tree](https://github.com/proflim123/rmua/blob/main/Map3Tree.png?raw=true)
+
 start = (10,10) and end = (250,250) for map 4
+
+![Image of Map4Tree](https://github.com/proflim123/rmua/blob/main/Map4Tree.png?raw=true)
 
 The robot is assumed to be only one pixel wide. In general that is not the case, but for simplicity reasons I have assumed so
