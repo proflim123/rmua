@@ -3,7 +3,7 @@ Submission for RMUA technical assessment
 # Instructions
 Download the rmua.zip folder, it has everything inside
 
-Extract the files
+Extract the files into a folder called rmua
 
 Open up a terminal, type the following commands:
 
@@ -21,7 +21,7 @@ This program allows a user to draw a map of their own. Click the mouse at a poin
 
 Press Esc to save as “userdrawn.jpg” inside rmua/src/map_server/src 
 
-If you messed up just Esc and then run ./drawer again to overwrite
+If you messed up just Esc and then run ./drawer again to overwrite the same file
 
 ## Main part
 *roscore*
@@ -44,9 +44,9 @@ The message, when echoed has -1s and 0s instead of 255s and 0s. This is because 
 
 **Planner node**
 
-*rosrun planner planner _maxbranchlength:=20*
+*rosrun planner planner _maxbranchlength:=50*
 
-where 20 can be replaced by the maximum length the RRT branches should be
+where 50 can be replaced by the maximum length the RRT branches should be. As with the file_name, please declare it
 
 It will notify in terminal when inputs (start, end and map) are received, and will proceed to run only when all 3 are received
 
@@ -54,9 +54,9 @@ The red tree comprises all nodes in the tree, whether or not they are part of th
 
 The blue tree is a path from start to end
 
-The green tree has been removed
+The green tree is an optimized version of the blue tree, skipping any unnecessary nodes
 
-After outputting the points of the final route in terminal the OpenCV window will wait for you to press any key before publishing the message
+After publishing the path message the OpenCV window will wait for you to press any key before closing
 
 Click the window before pressing the key
 
