@@ -13,8 +13,6 @@ Open up a terminal, type the following commands:
 
 *source devel/setup.bash*
 ## Optional part
-(You might need to run ```++ draw.cpp -o drawer -std=c++11 `pkg-config --cflags --libs opencv` ``` beforehand, but shouldn't be necessary)
-
 *./drawer*
 
 This program allows a user to draw a map of their own. Click the mouse at a point and lift it up at another point to draw a line between these two points. The line will be invisible until you lift up the mouse 
