@@ -70,6 +70,7 @@ Map must be sent first before start and endpoints, which are to be sent to the t
 The origin is assumed to be 0,0 which is the top left of the map. Any coordinates must have their x and y coordinate between 0 and 499 inclusive, and hopefully not in an occupied square. I personally recommend (and tested using these points in the screenshots):
 
 start = (50,50) and end = (450,450) for maps 1 and 2 and userdrawn
+Map1Tree.png
 
 start = (10,10) and end = (490,490) for map 3
 
