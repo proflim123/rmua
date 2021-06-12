@@ -204,16 +204,9 @@ void calculatepath(){//Assumes startpoint, endpoint and occupancy_data are all t
 							if(!pointfound){pointfound = true;}
 						}
 					}
-				}
+				}//If distance from newpoint to pt in tree exceeds nearest dist, we dont consider it at all
 			}
 			if(!pointfound){continue;} //The generated point was blocked off from every other known point. Try again
-			if(nearestdist > maxbranchlength){//Too long a branch, truncate
-				double dx, dy;
-				dx = (newpoint.x - nearestpoint.x)*(maxbranchlength/nearestdist);
-				dy = (newpoint.y - nearestpoint.y)*(maxbranchlength/nearestdist);
-				newpoint.x = nearestpoint.x + dx;
-				newpoint.y = nearestpoint.y + dy;
-			}
 			cv::drawMarker(grid, cv::Point(newpoint.x, newpoint.y), cv::Scalar(0, 255, 0), cv::MARKER_TILTED_CROSS, 10);
 			cv::line(grid, cv::Point(nearestpoint.x, nearestpoint.y), cv::Point(newpoint.x, newpoint.y), cv::Scalar( 0, 0, 255 ), 2);
 			cv::imshow("Map", grid); 
